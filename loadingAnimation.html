@@ -34,6 +34,11 @@
         if (index % frames.length === 0) {
           cycleCount++;
         }
+          // New feature: change background color as animation runs
+        document.body.style.backgroundColor = cycleCount % 2 === 0 ? "#f4f4f4" : "#e6f7ff";
+
+
+
         // 10. clearInterval stops the animation after the maximum cycles are reached
         if (cycleCount >= maxCycles) {
           clearInterval(interval);
