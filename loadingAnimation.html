@@ -6,25 +6,35 @@
 </head>
 <body style="font-family: monospace; text-align: center; padding-top: 100px; background-color: #f4f4f4;">
 
+  <!-- 1. This div displays the loading animation on the page -->
   <div id="loader" style="font-size: 2rem; margin-bottom: 20px;">Loading...</div>
+  <!-- 2. This div displays the current status message -->
   <div id="status">Please wait</div>
 
   <script>
+    // 3. This function runs the loading animation logic
     function runLoadingAnimation() {
+      // 4. Get the loader element so JavaScript can change its text
       const loader = document.getElementById("loader");
+      // 5. Get the status element to update messages like "Done"
       const status = document.getElementById("status");
 
+      // 6. These symbols are shown one at a time to create an animation
       const frames = ["⏳", "⌛", ".", "..", "..."];
+      // 7. index tracks which frame should be displayed next
       let index = 0;
+      // 8. cycleCount tracks how many full animation loops have completed
       let cycleCount = 0;
       const maxCycles = 10;
 
+      // 9. setInterval runs this code repeatedly every 500 milliseconds
       const interval = setInterval(() => {
         loader.textContent = frames[index % frames.length];
         index++;
         if (index % frames.length === 0) {
           cycleCount++;
         }
+        // 10. clearInterval stops the animation after the maximum cycles are reached
         if (cycleCount >= maxCycles) {
           clearInterval(interval);
           loader.textContent = "✅";
